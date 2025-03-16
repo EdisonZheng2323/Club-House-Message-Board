@@ -30,4 +30,4 @@ async function initializeDatabase(){
   await client.end();
 }
 
-module.exports(initializeDatabase);
+module.exports = initializeDatabase;

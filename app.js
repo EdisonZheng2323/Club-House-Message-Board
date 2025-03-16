@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const router = require("./routes/index");
 const pool = require('./db/pool');
+const passport = require('passport');
 const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const initializeDatabase = require('./db/populatedb');
@@ -17,7 +18,7 @@ initializeDatabase();
 app.use(session({
   store: new pgSession({
     pool: pool,
-    tableName: 'sessions'
+    tableName: 'session'
   }),
   secret: process.env.SECRET,
   resave: false,
