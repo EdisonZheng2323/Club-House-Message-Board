@@ -35,10 +35,24 @@ async function postMembership(req, res){
   const user =  req.user;
   if(secret === process.env.SECRET_PASSWORD){
     db.updateMembership(true, user.id);
+    res.redirect("/");
   }
   else{
     res.redirect("/membership");
   }
 }
 
-module.exports = {getHome, getSignUp, postSignUp, getLogin, getMembership, postMembership};
+async function getMessage(req, res){
+  res.render('message');
+}
+
+async function postMessage(req, res){
+  const user = req.user;
+  const text = req.body.text;
+  const title = req.body.title;
+  const id = user.id;
+  db.insertMessage(id, title, text);
+  res.redirect('/');
+}
+
+module.exports = {getHome, getSignUp, postSignUp, getLogin, getMembership, postMembership, getMessage, postMessage};

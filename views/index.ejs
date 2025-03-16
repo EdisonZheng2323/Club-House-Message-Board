@@ -10,11 +10,13 @@
     <h1>WELCOME BACK <%= currentUser.username %></h1>
     <% if(!currentUser.membership_status){ %>
       <a href = "/membership"> Join Membership</a>
+    <% } else { %>
+      <a href = "/message"> Create a New Message</a> <br> 
     <% } %>
     <a href="/log-out">Log Out</a>
   <% } else { %>
     <a href = "/login"> Login </a> <br>
     <a href = "/sign-up"> Sign Up </a> 
-  <%}%>
+  <% } %>
 </body>
 </html>

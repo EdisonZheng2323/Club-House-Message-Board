@@ -1,7 +1,7 @@
 const {Router} = require("express");
 const router = Router();
 const passport = require('passport');
-const {postSignUp, getHome, getSignUp, getLogin, getMembership, postMembership} = require('../controllers/indexController');
+const {postSignUp, getHome, getSignUp, getLogin, getMembership, postMembership, getMessage, postMessage} = require('../controllers/indexController');
 
 router.get('/', getHome);
 
@@ -26,4 +26,8 @@ router.post('/login', passport.authenticate("local", {
   router.get('/membership', getMembership);
 
   router.post('/membership', postMembership);
+
+  router.get('/message', getMessage);
+
+  router.post('/message', postMessage);
 module.exports = router;
