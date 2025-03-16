@@ -8,6 +8,9 @@
 <body>
   <% if (currentUser) {%>
     <h1>WELCOME BACK <%= currentUser.username %></h1>
+    <% if(!currentUser.membership_status){ %>
+      <a href = "/membership"> Join Membership</a>
+    <% } %>
     <a href="/log-out">Log Out</a>
   <% } else { %>
     <a href = "/login"> Login </a> <br>

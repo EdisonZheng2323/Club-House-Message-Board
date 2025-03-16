@@ -26,4 +26,19 @@ async function getLogin(req, res){
   res.render("login");
 }
 
-module.exports = {getHome, getSignUp, postSignUp, getLogin};
+async function getMembership(req, res){
+  res.render("membership");
+}
+
+async function postMembership(req, res){
+  const secret = req.body.secret_password;
+  const user =  req.user;
+  if(secret === process.env.SECRET_PASSWORD){
+    db.updateMembership(true, user.id);
+  }
+  else{
+    res.redirect("/membership");
+  }
+}
+
+module.exports = {getHome, getSignUp, postSignUp, getLogin, getMembership, postMembership};
