@@ -3,7 +3,9 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 async function getHome(req, res){
-  res.render("index");
+  const messages = await db.getAllMessages();
+  const users = await db.getAllUsers();
+  res.render("index", {messages: messages, users: users});
 }
 
 async function getSignUp(req, res) {

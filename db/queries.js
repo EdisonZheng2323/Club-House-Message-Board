@@ -13,8 +13,13 @@ async function insertMessage(id, title, text){
 }
 
 async function getAllMessages(){
-  const {messages} = await pool.query("SELECT * FROM messages");
-  return messages;
+  const {rows} = await pool.query("SELECT * FROM messages");
+  return rows;
 }
 
-module.exports = {insertUser, updateMembership, insertMessage, getAllMessages};
+async function getAllUsers(){
+  const {rows} = await pool.query("SELECT * FROM users");
+  return rows;
+}
+
+module.exports = {insertUser, updateMembership, insertMessage, getAllMessages, getAllUsers};
